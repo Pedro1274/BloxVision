@@ -125,7 +125,7 @@ const ProfileCommon = {
     // Common authentication check
     checkAuth: function() {
         if (!localStorage.getItem("token")) {
-            window.location.href = "/login/login.html";
+            window.location.href = "../authentication/login/login.html";
             return false;
         }
         return true;
@@ -138,7 +138,7 @@ const ProfileCommon = {
         logoutBtn.addEventListener("click", (e) => {
             e.preventDefault();
             localStorage.clear();
-            window.location.href = "/login/login.html";
+            window.location.href = "../authentication/login/login.html";
         });
     },
 
