@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e25de;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+}
+
+@font-face{
+    font-family: 'GomePixels';
+    src: url('fonts/gome_pixel/GomePixel-Regular.otf');
+}
+
+.sidebar {
+    position: fixed;
+    width: 85px;
+    height: 100%;
+    background-color: #191a1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.sidebar button {
+    color: white; /* ou outra cor */
+    background-color: transparent;
+    border: none; /* remove a borda padrão */
+    margin-bottom: 15px;
+    cursor: pointer; /* dá aparência de botão clicável */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    right: 0;
+    height: 50px;
+    background-color: #191a1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px 0 10px;
+    z-index: 100;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding-right: 330px;
+    /* Mantém o padding à direita */
+    width: 100%;
+    /* Faz a barra de pesquisa ocupar toda a largura disponível */
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    margin-left: 350px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    /* Ajusta a borda */
+    background-color: #191a1f;
+    flex-grow: 1;
+    /* Faz o input ocupar o espaço restante da barra de pesquisa */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Espaço entre imagem e texto */
+    padding: 5px;
+}
+
+.profile img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* espaço entre logo e texto */
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.logo img {
+    height: 40px;
+    /* ajuste conforme o tamanho da sua logo */
+    width: auto;
+}
+
+.logo h1 {
+    font-family: 'GomePixels', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}
+
+.chat-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  margin-left: 80px;
+}
+
+.friends-sidebar {
+  width: 250px;
+  margin-top: -10px;
+  background-color: #1e1e25de;
+  color: #e0e0e0;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #2d2d3a;
+}
+
+.friends-sidebar h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.friends-sidebar ul {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.friends-sidebar li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.friends-sidebar li:hover {
+  background-color: #2d2d3a;
+}
+
+.chat-main {
+  margin-top: -10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #191a1f;
+}
+
+#chat-header {
+  padding: 15px;
+  background-color: #1e1e25de;
+  color: white;
+  text-align: center;
+  border-bottom: 1px solid #2d2d3a;
+}
+
+.mensagens {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.mensagem {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #1e1e25de;
+  max-width: 70%;
+}
+
+.mensagem span {
+  font-weight: bold;
+  color: #4dabf7;
+}
+
+#form-msg {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #2d2d3a;
+  background-color: #1e1e25de;
+}
+
+#mensagem {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #2d2d3a;
+  border-radius: 20px;
+  margin-right: 10px;
+  background-color: #2d2d3a;
+  color: #e0e0e0;
+  outline: none;
+}
+
+#mensagem:focus {
+  border-color: #4dabf7;
+}
+
+#form-msg button {
+  padding: 10px 20px;
+  border: none;
+  background: #4dabf7;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+
+#form-msg button:hover {
+  background: #3b8fd9;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e25de;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4d4d5a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5d5d6a;
+}

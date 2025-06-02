@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minhas Reações - BloxVision</title>
+  <link rel="stylesheet" href="reaction.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp"
+        alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="../video_upload/video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="../user_profile/my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp"
+        alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="../icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+        <a href="../user_profile/my_profile.html">Meu Perfil</a>
+        <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="reactions-container">
+    <div class="reactions-header">
+      <h2>Minhas Reações</h2>
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab('curtidos')">Vídeos Curtidos</button>
+        <button class="tab-button" onclick="openTab('favoritos')">Vídeos Favoritos</button>
+      </div>
+    </div>
+
+    <div id="curtidos" class="tab-content active">
+      <div class="videos-container" id="likedVideosContainer"></div>
+    </div>
+
+    <div id="favoritos" class="tab-content">
+      <div class="videos-container" id="favoritedVideosContainer"></div>
+    </div>
+  </main>
+
+  <script src="../user_profile/profile_common.js"></script>
+  <script src="../assets/search.js"></script>
+  <script src="../index.js"></script>
+  <script>
+    const token = localStorage.getItem("token");
+    
+    function openTab(tabName) {
+      // Hide all tab contents
+      const tabContents = document.getElementsByClassName('tab-content');
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+
+      // Remove active class from all buttons
+      const tabButtons = document.getElementsByClassName('tab-button');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+
+      // Show current tab and mark button as active
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+      
+      // Load content if not already loaded
+      if (tabName === 'curtidos' && !document.getElementById('likedVideosContainer').hasChildNodes()) {
+        loadLikedVideos();
+      } else if (tabName === 'favoritos' && !document.getElementById('favoritedVideosContainer').hasChildNodes()) {
+        loadFavoritedVideos();
+      }
+    }
+    
+    function loadLikedVideos() {
+      fetch("http://localhost:3000/api/reactions/liked", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then(res => res.json())
+      .then(videos => {
+        const container = document.getElementById("likedVideosContainer");
+        if (!videos.length) {
+          container.innerHTML = '<p class="empty-message">Você ainda não curtiu nenhum vídeo.</p>';
+          return;
+        }
+        renderVideos(container, videos);
+      })
+      .catch(err => {
+        console.error("Erro ao carregar vídeos curtidos:", err);
+        document.getElementById("likedVideosContainer").innerHTML = 
+          '<p class="empty-message">Erro ao carregar vídeos curtidos.</p>';
+      });
+    }
+    
+    function loadFavoritedVideos() {
+      fetch("http://localhost:3000/api/reactions/favorited", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then(res => res.json())
+      .then(videos => {
+        const container = document.getElementById("favoritedVideosContainer");
+        if (!videos.length) {
+          container.innerHTML = '<p class="empty-message">Você ainda não favoritou nenhum vídeo.</p>';
+          return;
+        }
+        renderVideos(container, videos);
+      })
+      .catch(err => {
+        console.error("Erro ao carregar vídeos favoritados:", err);
+        document.getElementById("favoritedVideosContainer").innerHTML = 
+          '<p class="empty-message">Erro ao carregar vídeos favoritados.</p>';
+      });
+    }
+    
+    function renderVideos(container, videos) {
+      container.innerHTML = '';
+      videos.forEach(video => {
+        const card = document.createElement("div");
+        card.classList.add("video-card");
+        card.innerHTML = `
+          <a href="video.html?id=${video._id}">
+            <img src="${video.thumbnailUrl}" alt="Thumbnail">
+            <h3>${video.title}</h3>
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+    
+    // Load liked videos by default when page loads
+    document.addEventListener('DOMContentLoaded', loadLikedVideos);
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil de Usuário - BloxVision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Notable&family=Pixelify+Sans:wght@400..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../assets/search.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+        <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+        <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+        <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp"
+                alt="Página mensagens privadas"><br>Mensagens</a>
+        <a href="../reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+        <a href="../video_upload/video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+                alt="Página criar conteúdo"><br>Criar</a>
+        <a href="my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp"
+                alt="Página de perfil"><br>Perfil</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="../index.html" class="logo">
+        <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+        <h1>BloxVision</h1>
+        </a>
+        <div class="search-bar">
+        <input type="text" placeholder="Pesquisar..." />
+        </div>
+        <div class="profile" id="profileDropdown">
+            <img src="../icons/joao_gomes.webp" alt="Seu ícone de perfil" id="headerProfilePicture">
+            <p id="headerUsername">Carregando...</p>
+            <div class="dropdown-content">
+                <a href="../user_profile/my_profile.html">Meu Perfil</a>
+                <a href="#" id="logoutBtn">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Profile Content -->
+    <main class="main">
+        <div class="profile-header">
+            <img src="../icons/joao_gomes.webp" alt="Foto de perfil" class="profile-picture" id="profilePicture">
+            <div class="profile-info">
+                <h2 id="profileUsername">Carregando...</h2>
+                <div class="profile-stats">
+                    <div class="stat" id="friendsStat">
+                        <div class="stat-value" id="friendsCount">0</div>
+                        <div class="stat-label">Amigos</div>
+                    </div>
+                    <div class="stat" id="videosStat">
+                        <div class="stat-value" id="videosCount">0</div>
+                        <div class="stat-label">Vídeos</div>
+                    </div>
+                </div>
+                <div class="profile-bio" id="profileBio"></div>
+                <div class="profile-actions">
+                    <button class="add-friend-btn" id="addFriendBtn">Adicionar Amigo</button>
+                    <button class="message-btn" id="messageBtn">Enviar Mensagem</button>
+                </div>
+                <div class="join-date" id="joinDate"></div>
+            </div>
+        </div>
+
+        <div class="profile-videos">
+            <h3 class="section-title">Vídeos Postados</h3>
+            <div id="userVideos" class="video-row long"></div>
+        </div>
+    </main>
+
+    <script src="profile_common.js"></script>
+    <script src="user_profile.js"></script>
+    <script src="../assets/search.js"></script>
+    <script src="../index.js"></script>
+</body>
+</html>

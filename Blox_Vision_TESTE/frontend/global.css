@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: 'GomePixels';
+    src: url('fonts/gome_pixel/GomePixel-Regular.otf');
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #191a1f;
+    color: white;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    width: 85px;
+    height: 100%;
+    background-color: #191a1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.sidebar button {
+    color: white; /* ou outra cor */
+    background-color: transparent;
+    border: none; /* remove a borda padrão */
+    margin-bottom: 15px;
+    cursor: pointer; /* dá aparência de botão clicável */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Add these styles to your existing sidebar styles */
+.sidebar .sidebar-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sidebar .sidebar-button:hover {
+    color: var(--accent);
+}
+
+.sidebar .sidebar-button img {
+    width: 32px; /* Slightly larger than other icons for profile */
+    height: 32px;
+    border-radius: 50%; /* Circular profile picture */
+    object-fit: cover;
+    border: 2px solid #444;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .sidebar-button:hover img {
+    border-color: var(--accent);
+    transform: scale(1.05);
+}
+
+/* Active state when on profile page */
+.sidebar .sidebar-button.active {
+    color: var(--accent);
+}
+
+.sidebar .sidebar-button.active img {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    right: 0;
+    height: 50px;
+    background-color: #191a1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px 0 10px;
+    z-index: 100;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding-right: 330px;
+    /* Mantém o padding à direita */
+    width: 100%;
+    /* Faz a barra de pesquisa ocupar toda a largura disponível */
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    margin-left: 350px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    /* Ajusta a borda */
+    background-color: #191a1f;
+    flex-grow: 1;
+    /* Faz o input ocupar o espaço restante da barra de pesquisa */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Espaço entre imagem e texto */
+    padding: 5px;
+}
+
+.profile img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.main {
+    margin-left: 80px;
+    margin-top: 60px;
+    padding-left: 25px;
+    padding-top: 10px;
+    flex-grow: 1;
+}
+
+.main h1 {
+    margin-bottom: 10px;
+}
+
+.main-h2 {
+    font-size: medium;
+}
+
+.main-h1 {
+    font-size: medium;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* espaço entre logo e texto */
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.logo img {
+    height: 40px;
+    /* ajuste conforme o tamanho da sua logo */
+    width: auto;
+}
+
+.logo h1 {
+    font-family: 'GomePixels', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+}

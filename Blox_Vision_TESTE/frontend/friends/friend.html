@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Amigos</title>
+  <link rel="stylesheet" href="friend.css">
+  <link rel="stylesheet" href="../assets/search.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp"
+        alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="../reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="../video_upload/video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="../user_profile/my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp"
+        alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="../icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+        <a href="../user_profile/my_profile.html">Meu Perfil</a>
+        <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="friends-container">
+    <div class="friends-header">
+      <h2>Gerenciar Amigos</h2>
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab('amigos')">Seus Amigos</button>
+        <button class="tab-button" onclick="openTab('solicitacoes')">Solicitações Recebidas</button>
+        <button class="tab-button" onclick="openTab('disponiveis')">Usuários Disponíveis</button>
+      </div>
+    </div>
+
+    <div id="amigos" class="tab-content active">
+      <div class="users-header">
+        <h2>Seus Amigos</h2>
+        <div class="search-box">
+          <input type="text" id="search-friends" placeholder="Pesquisar amigos...">
+          <img src="../icons/search-icon.webp">
+        </div>
+      </div>
+      <div class="users-grid" id="friends-list">
+      </div>
+    </div>
+
+    <div id="solicitacoes" class="tab-content">
+      <div class="requests-list" id="requests-list"></div>
+    </div>
+
+    <div id="disponiveis" class="tab-content">
+      <div class="users-header">
+        <h2>Usuários Disponíveis</h2>
+        <div class="search-box">
+          <input type="text" id="search-users" placeholder="Pesquisar usuários...">
+          <img src="../icons/search-icon.webp">
+        </div>
+      </div>
+      <div class="users-grid" id="usuarios">
+        <div class="loading-state">
+          <img src="../icons/loading-spinner.webp" alt="Carregando">
+          <p>Carregando usuários...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../user_profile/profile_common.js"></script>
+  <script src="friend.js"></script>
+  <script src="usuarios_disponiveis.js"></script>
+  <script src="../assets/search.js"></script>
+  <script src="../index.js"></script>
+  <script>
+    function openTab(tabName) {
+      // Hide all tab contents
+      const tabContents = document.getElementsByClassName('tab-content');
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+
+      // Remove active class from all buttons
+      const tabButtons = document.getElementsByClassName('tab-button');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+
+      // Show current tab and mark button as active
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>

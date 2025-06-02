@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="../style.css">
+    <title>Autenticação</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form" id="loginForm">
+                <h2 class="title">Entrar</h2>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Senha" required>
+                </div>
+                <input type="submit" value="Entrar" class="btn">
+                <p class="account-text">Não tem conta? <a href="#" id="sign-up-btn2">Cadastre-se</a></p>
+                <button class="btn" id="logoutBtn">Logout</button>
+            </form>
+            <form action="" class="sign-up-form" id="registerForm">
+                <h2 class="title">Cadastro</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Usuário" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Senha" required>
+                </div>
+                <input type="submit" value="Registrar" class="btn">
+                <p class="account-text">Já tem uma conta? <a href="#" id="sign-in-btn2">Entrar</a></p>
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Já é membro?</h3>
+                    <p>Entre com sua conta para acessar todos os recursos.</p>
+                    <button class="btn" id="sign-in-btn">Entrar</button>
+                </div>
+                <img src="signin.svg" alt="" class="image">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Novo aqui?</h3>
+                    <p>Registre-se para começar a usar nosso sistema.</p>
+                    <button class="btn" id="sign-up-btn">Cadastrar</button>
+                </div>
+                <img src="signup.svg" alt="" class="image">
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>

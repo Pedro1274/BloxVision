@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'GomePixels';
+    src: url('fonts/gome_pixel/GomePixel-Regular.otf');
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #191a1f;
+    color: white;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    width: 85px;
+    height: 100%;
+    background-color: #191a1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.sidebar button {
+    color: white;
+    /* ou outra cor */
+    background-color: transparent;
+    border: none;
+    /* remove a borda padrão */
+    margin-bottom: 15px;
+    cursor: pointer;
+    /* dá aparência de botão clicável */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Add these styles to your existing sidebar styles */
+.sidebar .sidebar-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sidebar .sidebar-button:hover {
+    color: var(--accent);
+}
+
+.sidebar .sidebar-button img {
+    width: 32px;
+    /* Slightly larger than other icons for profile */
+    height: 32px;
+    border-radius: 50%;
+    /* Circular profile picture */
+    object-fit: cover;
+    border: 2px solid #444;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .sidebar-button:hover img {
+    border-color: var(--accent);
+    transform: scale(1.05);
+}
+
+/* Active state when on profile page */
+.sidebar .sidebar-button.active {
+    color: var(--accent);
+}
+
+.sidebar .sidebar-button.active img {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    right: 0;
+    height: 50px;
+    background-color: #191a1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px 0 10px;
+    z-index: 100;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding-right: 330px;
+    /* Mantém o padding à direita */
+    width: 100%;
+    /* Faz a barra de pesquisa ocupar toda a largura disponível */
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    margin-left: 350px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    /* Ajusta a borda */
+    background-color: #191a1f;
+    flex-grow: 1;
+    /* Faz o input ocupar o espaço restante da barra de pesquisa */
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.search-type-selector {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  background: #1e1e25de;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  padding: 5px;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-type-btn {
+  padding: 8px 15px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-type-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.search-type-btn.active {
+  background: #007bff;
+  color: white;
+}
+
+.search-type-btn:hover {
+  background: #e0e0e0;
+}
+
+.search-type-btn.active:hover {
+  background: #0069d9;
+}
+
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f5f5f5;
+}
+
+.show {
+    display: block;
+}
+
+.profile img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* espaço entre logo e texto */
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.logo img {
+    height: 40px;
+    /* ajuste conforme o tamanho da sua logo */
+    width: auto;
+}
+
+.logo h1 {
+    font-family: 'GomePixels', sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--accent);
+}
+
+/* Reactions Container Styles */
+.reactions-container {
+    margin-left: 80px;
+    margin-top: 60px;
+    padding: 25px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.reactions-header h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Tabs Styles */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #aaa;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.tab-button.active {
+    color: var(--accent);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Videos Container */
+.videos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.video-card {
+    background-color: #1e1e25de;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.video-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-card h3 {
+    padding: 12px;
+    font-size: 15px;
+    color: white;
+    line-height: 1.4;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Empty State Styles */
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.empty-message p {
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .videos-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .tab-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reactions-container {
+        padding: 15px;
+    }
+    
+    .videos-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs {
+        justify-content: space-between;
+    }
+    
+    .tab-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}

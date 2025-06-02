@@ -1,0 +1,72 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    padding-right: 330px;
+    /* Mantém o padding à direita */
+    width: 100%;
+    /* Faz a barra de pesquisa ocupar toda a largura disponível */
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    margin-left: 350px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    /* Ajusta a borda */
+    background-color: #191a1f;
+    flex-grow: 1;
+    /* Faz o input ocupar o espaço restante da barra de pesquisa */
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.search-type-selector {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  background: #1e1e25de;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  padding: 5px;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-type-btn {
+  padding: 8px 15px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-type-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.search-type-btn.active {
+  background: #007bff;
+  color: white;
+}
+
+.search-type-btn:hover {
+  background: #e0e0e0;
+}
+
+.search-type-btn.active:hover {
+  background: #0069d9;
+}

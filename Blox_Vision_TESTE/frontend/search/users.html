@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados de Usuários - BloxVision</title>
+  <link rel="stylesheet" href="../../index.css">
+  <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="../assets/search.css">
+  <link rel="stylesheet" href="search.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp" alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="../reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="../video_upload/video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="../user_profile/my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp" alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="../icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+        <a href="../user_profile/my_profile.html">Meu Perfil</a>
+        <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main search-results">
+    <h1>Resultados de Usuários para "<span id="search-query"></span>"</h1>
+    
+    <div class="filter-options">
+      <button class="filter-btn active">Todos</button>
+    </div>
+    
+    <!-- Loading indicator -->
+    <div id="loading-indicator" class="loading">
+      <div class="spinner"></div>
+      <p>Carregando resultados...</p>
+    </div>
+    
+    <!-- No results message -->
+    <div id="no-results" class="no-results" style="display: none;">
+      <p>Nenhum usuário encontrado para sua pesquisa.</p>
+    </div>
+    
+    <!-- Results container -->
+    <div id="user-results" class="user-grid" style="display: none;"></div>
+    
+    <!-- Pagination controls -->
+    <div class="pagination-controls">
+      <button id="load-more-btn" class="load-more-btn">Carregar mais</button>
+    </div>
+  </main>
+
+  <script src="../user_profile/profile_common.js"></script>
+  <script src="user-search.js"></script>
+  <script src="../assets/search.js"></script>
+  <script src="../index.js"></script>
+</body>
+</html>

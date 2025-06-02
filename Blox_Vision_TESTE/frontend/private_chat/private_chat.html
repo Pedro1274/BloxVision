@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Privado</title>
+  <link rel="stylesheet" href="../index.css" />
+  <link rel="stylesheet" href="private_chat.css" />
+  <link rel="stylesheet" href="../assets/search.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp"
+        alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="../reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="../video_upload/video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="../user_profile/my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp"
+        alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="../icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+        <a href="../user_profile/my_profile.html">Meu Perfil</a>
+        <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="chat-container">
+    <aside class="friends-sidebar">
+      <h3>Seus Amigos</h3>
+      <ul id="lista-amigos"></ul>
+    </aside>
+
+    <main class="chat-main">
+      <div id="chat-header"><strong>Chat Privado</strong></div>
+      <div id="mensagens" class="mensagens"></div>
+      <form id="form-msg">
+        <input type="text" id="mensagem" placeholder="Digite sua mensagem..." required />
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="../user_profile/profile_common.js"></script>
+  <script src="private_chat.js"></script>
+  <script src="../assets/search.js"></script>
+  <script src="../index.js"></script>
+</body>
+
+</html>

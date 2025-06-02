@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BloxVision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Notable&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="index.html"><img src="icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="./friends/friend.html"><img src="icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="./private_chat/private_chat.html"><img src="icons/sidebar-icons/send.webp" alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="./reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="./video_upload/video_upload.html"><img src="icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="./user_profile/my_profile.html" class="sidebar-button"><img src="icons/avatars/avatar1.webp" alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <img src="icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+        <a href="./user_profile/my_profile.html">Meu Perfil</a>
+        <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <h1>Início</h1>
+    <h2 class="main-h2">Amigos (<span id="friendsCount">0</span>)</h2>
+    <div class="friends-carousel" id="friendsCarousel">
+      <div class="add-friend">
+        <a href="./friends/friend.html">
+          <img src="icons/plus-icon.webp" alt="Adicione um amigo">
+          <strong>
+            <p>Adicionar amigo</p>
+          </strong>
+        </a>
+      </div>
+      <!-- Friends will be dynamically inserted here -->
+    </div>
+
+    <h1 class="main-h1">Vídeos Recomendados</h1>
+    <div id="longVideosTop" class="video-row long"></div>
+    <h1 class="main-h1">Blox Bites</h1>
+    <div id="shortVideosRow" class="video-row short"></div>
+    <h1 class="main-h1">Vídeos Recomendados</h1>
+    <div id="longVideosRest" class="video-row long"></div>
+  </main>
+
+  <script src="./user_profile/profile_common.js"></script>
+  <script src="./assets/search.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

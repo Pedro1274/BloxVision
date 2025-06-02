@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload de Vídeo - BloxVision</title>
+  <link rel="stylesheet" href="video_upload.css">
+  <link rel="stylesheet" href="../assets/search.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <button><img src="../icons/sidebar-icons/align-justify.webp" alt="Menu da barra lateral"><br></button>
+    <a href="../index.html"><img src="../icons/sidebar-icons/home.webp" alt="Página inicial"><br>Início</a>
+    <a href="../friends/friend.html"><img src="../icons/sidebar-icons/users.webp" alt="Página amigos"><br>Amigos</a>
+    <a href="../private_chat/private_chat.html"><img src="../icons/sidebar-icons/send.webp"
+        alt="Página mensagens privadas"><br>Mensagens</a>
+    <a href="../reactions/reaction.html">🎬<br>Playlists Pessoais</a>
+    <a href="video_upload.html"><img src="../icons/sidebar-icons/plus-square.webp"
+        alt="Página criar conteúdo"><br>Criar</a>
+    <a href="../user_profile/my_profile.html" class="sidebar-button"><img src="../icons/joao_gomes.webp" alt="Página de perfil"><br>Perfil</a>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img src="../icons/logo_oficial.png" alt="Logo oficial da Blox Vision">
+      <h1>BloxVision</h1>
+    </a>
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." />
+    </div>
+    <div class="profile" id="profileDropdown">
+      <img id="headerProfilePicture" src="../icons/avatars/avatar1.webp" alt="Profile Picture" />
+      <p id="headerUsername">Carregando...</p>
+      <div class="dropdown-content">
+          <a href="../user_profile/my_profile.html">Meu Perfil</a>
+          <a href="#" id="logoutBtn">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="upload-container">
+      <h1>Upload de Vídeo</h1>
+      <form id="uploadForm" enctype="multipart/form-data">
+        <div class="form-group file-input-wrapper">
+          <label for="video" class="file-input-label">
+            Clique para selecionar um vídeo
+            <span>Formatos suportados: MP4, WebM, MOV</span>
+          </label>
+          <input type="file" id="video" name="video" accept="video/*" required />
+        </div>
+        <div>
+          <label for="title">Título do Vídeo:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+        <div>
+          <label for="description">Descrição:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        <div class="video-preview-upload">
+          <video id="preview" controls></video>
+        </div>
+        <button type="submit">Enviar Vídeo</button>
+      </form>
+      <div id="errorMessage" class="error"></div>
+    </div>
+  </main>
+
+  <script src="../user_profile/profile_common.js"></script>
+  <script src="../assets/search.js"></script>
+  <script src="../index.js"></script>
+  <script>
+    // Video preview handler
+    document.getElementById("video").addEventListener("change", function () {
+      const file = this.files[0];
+      const preview = document.getElementById("preview");
+      const previewContainer = document.querySelector(".video-preview-upload");
+      const label = document.querySelector(".file-input-label");
+
+      if (file) {
+        // Update label
+        label.innerHTML = `Arquivo selecionado: <strong>${file.name}</strong><br>
+          <span>Tamanho: ${(file.size / (1024 * 1024)).toFixed(2)} MB | Tipo: ${file.type}</span>`;
+        
+        // Show preview
+        preview.src = URL.createObjectURL(file);
+        previewContainer.style.display = "block";
+      } else {
+        // Reset label
+        label.innerHTML = `Clique para selecionar um vídeo<br>
+          <span>Formatos suportados: MP4, WebM, MOV</span>`;
+        
+        // Hide preview
+        previewContainer.style.display = "none";
+      }
+    });
+
+    document.getElementById("uploadForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const video = document.getElementById("video").files[0];
+      const title = document.getElementById("title").value;
+      const description = document.getElementById("description").value;
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+
+      if (!token || !userId) {
+        document.getElementById("errorMessage").innerText = "Usuário não autenticado.";
+        return;
+      }
+
+      if (!video) {
+        document.getElementById("errorMessage").innerText = "Por favor, selecione um vídeo.";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("video", video);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("userId", userId); // ← Adicionado aqui!
+
+      try {
+        const response = await fetch("http://localhost:3000/api/videos/upload", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Authorization": `Bearer ${token}`
+          },
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "Erro ao enviar o vídeo.");
+        }
+
+        alert("Vídeo enviado com sucesso!");
+        window.location.href = "http://localhost:3000/"; // Redireciona após sucesso
+        document.getElementById("uploadForm").reset();
+      } catch (error) {
+        document.getElementById("errorMessage").innerText = error.message;
+      }
+    });
+  </script>
+</body>
+
+</html>
